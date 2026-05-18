@@ -6,20 +6,26 @@
     <title>Research Portfolio | Kumkum</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://3dmol.org/build/3Dmol-min.js"></script>
- <style>  /* Emergency layout overwrite to stop the text overlap */
-[id="mxeneViewer"] {
-    max-height: 350px !important;
-}
-.lg\:col-span-5 {
+     <style>
+/* Clean layout override targeting the right-side card directly */
+section div .grid > div:last-child {
     width: 100% !important;
+    max-width: 100% !important;
     margin-top: 2rem !important;
 }
+
+[id="mxeneViewer"] {
+    height: 400px !important;
+    min-height: 400px !important;
+}
+
 @media (min-width: 1024px) {
-    .lg\:col-span-5 {
-        width: 41.666667% !important;
+    section div .grid > div:last-child {
+        width: 45% !important;
         margin-top: 0 !important;
     }
 }
+</style>
      <style>
         /* Smooth transition blur for security lock */
         .secure-blur { filter: blur(20px); pointer-events: none; user-select: none; }
