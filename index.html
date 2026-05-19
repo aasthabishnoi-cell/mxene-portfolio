@@ -6,244 +6,255 @@
     <title>Academic Portfolio | Kumkum</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
-        /* Minimalist blur utility for security authentication shield */
-        .secure-blur { filter: blur(12px); pointer-events: none; user-select: none; }
+        /* Fluid premium transitions and blur states */
+        .secure-blur { filter: blur(16px); pointer-events: none; user-select: none; }
         html { scroll-behavior: smooth; }
+        .smooth-shadow { shadow: 0 4px 20px -2px rgba(15, 23, 42, 0.04), 0 2px 12px -4px rgba(15, 23, 42, 0.02); }
     </style>
 </head>
-<body class="bg-white text-slate-800 font-sans antialiased selection:bg-rose-100 selection:text-rose-950">
+<body class="bg-slate-50/50 text-slate-800 font-sans antialiased selection:bg-blue-100 selection:text-blue-950">
 
-    <div id="passwordGate" class="fixed inset-0 z-50 flex flex-col items-center justify-center bg-slate-100/90 backdrop-blur-sm px-4">
-        <div class="max-w-md w-full bg-white border border-slate-200 rounded-xl p-8 shadow-xl text-center">
-            <div class="w-12 h-12 bg-rose-50 text-rose-600 rounded-full flex items-center justify-center mx-auto mb-4 border border-rose-200 shadow-sm">
-                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+    <div id="passwordGate" class="fixed inset-0 z-50 flex flex-col items-center justify-center bg-slate-900/40 backdrop-blur-md px-4 transition-all duration-500">
+        <div class="max-w-md w-full bg-white border border-slate-200/80 rounded-2xl p-8 shadow-2xl text-center transform scale-100 transition-transform duration-500">
+            <div class="w-12 h-12 bg-blue-50 text-blue-600 rounded-xl flex items-center justify-center mx-auto mb-4 border border-blue-100 shadow-sm">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m0 0v2m0-2h2m-2 0H10m3.5-3.5a3.5 3.5 0 11-7 0 3.5 3.5 0 017 0zM21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
                 </svg>
             </div>
-            <h2 class="text-xl font-bold text-slate-900 mb-2">Academic Access Portal</h2>
-            <p class="text-xs text-slate-500 mb-6 font-medium">This repository holds unpublished research content from Kumkum's Master's Dissertation. Please enter the assigned institutional security access key to view.</p>
+            <h2 class="text-xl font-bold text-slate-900 tracking-tight mb-2">Academic Access Portal</h2>
+            <p class="text-xs text-slate-500 mb-6 font-medium leading-relaxed">This archive contains unpublished dissertation material. Enter the assigned security verification access key to view the workspace.</p>
             
             <div class="space-y-4">
-                <input type="password" id="accessKey" placeholder="Enter Access Key" class="w-full px-4 py-2.5 bg-slate-50 border border-slate-300 rounded-lg text-sm text-slate-900 focus:outline-none focus:border-rose-400 transition-colors">
-                <button onclick="checkAccess()" class="w-full py-2.5 bg-slate-800 hover:bg-slate-900 text-white text-sm font-semibold rounded-lg shadow-sm transition-colors">Verify & Authenticate</button>
-                <p id="errorMessage" class="text-xs text-red-600 hidden font-semibold">✕ Authentication failed. Invalid credential key structure.</p>
+                <input type="password" id="accessKey" placeholder="Enter Authentication Key" class="w-full px-4 py-2.5 bg-slate-50 border border-slate-200 rounded-xl text-sm text-slate-900 focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500 transition-all placeholder:text-slate-400">
+                <button onclick="checkAccess()" class="w-full py-2.5 bg-slate-900 hover:bg-slate-800 text-white text-sm font-semibold rounded-xl shadow-sm hover:shadow transition-all duration-200 tracking-wide">Verify Identity</button>
+                <p id="errorMessage" class="text-xs text-red-600 hidden font-semibold mt-2 flex items-center justify-center gap-1">✕ Access denied: Invalid security structure token.</p>
             </div>
         </div>
     </div>
 
-    <main id="mainContent" class="secure-blur min-h-screen flex flex-col transition-all duration-700">
+    <main id="mainContent" class="secure-blur min-h-screen flex flex-col transition-all duration-1000 ease-in-out">
         
-        <header class="border-b border-slate-200 bg-white sticky top-0 z-40 shadow-sm">
+        <header class="border-b border-slate-200/80 bg-white/80 backdrop-blur-md sticky top-0 z-40 shadow-sm/50">
             <div class="max-w-5xl mx-auto px-6 py-4 flex items-center justify-between">
                 <div>
-                    <h1 class="text-xl font-bold tracking-tight text-slate-900">Kumkum</h1>
-                    <p class="text-xs font-medium text-slate-500">Materials Chemistry Graduate Portfolio</p>
+                    <h1 class="text-lg font-bold tracking-tight text-slate-900 transition-colors duration-200 hover:text-blue-600 cursor-default">Kumkum</h1>
+                    <p class="text-[11px] font-semibold text-slate-400 tracking-wider uppercase">Materials Chemistry Research Portfolio</p>
                 </div>
                 <nav class="flex items-center gap-6">
-                    <a href="#" class="text-sm font-medium text-slate-600 hover:text-slate-900 transition-colors">Home</a>
-                    <a href="#achievements" class="text-sm font-medium text-slate-600 hover:text-slate-900 transition-colors">Achievements</a>
-                    <a href="#contact" class="text-sm font-medium text-slate-600 hover:text-slate-900 transition-colors">Contact</a>
-                    <a href="assets/Roadmap for Mxene.pdf" target="_blank" class="inline-flex items-center gap-1.5 px-3 py-1.5 text-xs font-semibold bg-rose-50 hover:bg-rose-100 text-rose-900 rounded-md transition-colors border border-rose-200 shadow-sm">
-                        <svg xmlns="http://www.w3.org/2000/svg" class="h-3.5 w-3.5 text-rose-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <a href="#" class="text-xs font-semibold uppercase tracking-wider text-slate-500 hover:text-slate-900 transition-colors duration-200">Home</a>
+                    <a href="#achievements" class="text-xs font-semibold uppercase tracking-wider text-slate-500 hover:text-slate-900 transition-colors duration-200">Achievements</a>
+                    <a href="#contact" class="text-xs font-semibold uppercase tracking-wider text-slate-500 hover:text-slate-900 transition-colors duration-200">Contact</a>
+                    <a href="assets/Roadmap for Mxene.pdf" target="_blank" class="inline-flex items-center gap-1.5 px-3 py-1.5 text-xs font-bold bg-blue-50 hover:bg-blue-100 text-blue-700 rounded-lg transition-all duration-200 border border-blue-100 shadow-sm hover:shadow">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-3.5 w-3.5 text-blue-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
                         </svg>
-                        Download Full Thesis
+                        Thesis Repository
                     </a>
                 </nav>
             </div>
         </header>
 
-        <div class="max-w-5xl w-full mx-auto px-6 py-10 flex-grow grid grid-cols-1 md:grid-cols-12 gap-10">
+        <div class="max-w-5xl w-full mx-auto px-6 py-12 flex-grow grid grid-cols-1 md:grid-cols-12 gap-12">
             
-            <aside class="md:col-span-4 flex flex-col items-center md:items-start text-center md:text-left border-b md:border-b-0 md:border-r border-slate-200 pb-8 md:pb-0 md:pr-8">
-                <div class="w-36 h-36 rounded-full bg-slate-100 border-2 border-slate-200 flex flex-col items-center justify-center overflow-hidden mb-5 text-center px-4 relative group shadow-inner">
-                    <img src="profile.jpg" alt="Kumkum Profile" onerror="this.style.display='none';" class="absolute inset-0 w-full h-full object-cover">
-                    <span class="text-xs font-semibold text-slate-400 tracking-wider uppercase group-hover:text-slate-500 transition-colors">Photo Placeholder</span>
+            <aside class="md:col-span-4 flex flex-col items-center md:items-start text-center md:text-left border-b md:border-b-0 md:border-r border-slate-200/80 pb-8 md:pb-0 md:pr-8">
+                <div class="w-36 h-36 rounded-2xl bg-slate-100 border border-slate-200 flex flex-col items-center justify-center overflow-hidden mb-6 relative group shadow-sm transition-all duration-300 hover:shadow-md hover:border-blue-200">
+                    <img src="photo.jpg" alt="Kumkum Profile" onerror="this.style.display='none';" class="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-105">
+                    <span class="text-[10px] font-bold text-slate-400 tracking-wider uppercase px-4 text-center group-hover:text-slate-500 transition-colors">Photo Slot</span>
                 </div>
                 
-                <h2 class="text-2xl font-bold text-slate-900">Kumkum</h2>
-                <p class="text-sm font-semibold text-rose-600 mt-1">Graduate Researcher</p>
-                <p class="text-xs text-slate-500 mt-2 font-medium leading-relaxed">Specializing in Inorganic & Functional Materials Chemistry with strategic emphasis on Electrochemical Energy Storage.</p>
+                <h2 class="text-xl font-bold text-slate-900 tracking-tight">Kumkum</h2>
+                <p class="text-xs font-bold text-blue-600 mt-1 uppercase tracking-wide">Master's in Chemistry Graduate</p>
+                <p class="text-xs text-slate-500 mt-3 font-medium leading-relaxed">Specializing in Inorganic & Functional Materials Chemistry with strategic emphasis on Electrochemical Energy Storage configurations.</p>
                 
-                <div class="w-full border-t border-slate-200 my-6"></div>
+                <div class="w-full border-t border-slate-200/80 my-6"></div>
                 
-                <div class="w-full space-y-3.5 text-left text-xs text-slate-600">
-                    <div class="flex items-center gap-2.5">
-                        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-slate-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <div class="w-full space-y-3 text-left text-xs text-slate-600">
+                    <div class="flex items-center gap-3 group">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-slate-400 group-hover:text-blue-500 transition-colors" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L22 8m-9 11h3a2 2 0 002-2v-3a2 2 0 00-2-2h-3m-6 0H6a2 2 0 00-2 2v3a2 2 0 002 2h3" />
                         </svg>
-                        <a href="mailto:bishnoikumkum220@gmail.com" class="hover:underline text-slate-800 font-medium">bishnoikumkum220@gmail.com</a>
+                        <a href="mailto:bishnoikumkum220@gmail.com" class="hover:text-blue-600 font-medium transition-colors">bishnoikumkum220@gmail.com</a>
                     </div>
-                    <div class="flex items-center gap-2.5">
+                    <div class="flex items-center gap-3">
                         <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-slate-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
                         </svg>
-                        <span class="text-slate-800 font-medium">Jaipur, Raj.</span>
+                        <span class="text-slate-700 font-medium">Jaipur, Rajasthan</span>
                     </div>
                 </div>
             </aside>
 
-            <div class="md:col-span-8 space-y-10">
+            <div class="md:col-span-8 space-y-12">
                 
                 <section class="space-y-3">
-                    <h3 class="text-lg font-bold tracking-tight border-b border-slate-200 pb-2 uppercase text-xs tracking-wider text-slate-400">Research Profile</h3>
+                    <h3 class="text-[11px] font-bold uppercase tracking-wider text-slate-400 border-b border-slate-200/85 pb-2">Research Profile</h3>
                     <p class="text-sm text-slate-600 leading-relaxed text-justify">
                         Inorganic and materials chemistry graduate with distinct research focus areas centered around functional two-dimensional transition metal compounds and MXene-based platforms. Proficient in executing foundational comprehensive structured scientific literature reviews, tracking property-to-structure dynamics, and identifying operational boundary constraints for supercapacitor architectures and high-rate electrochemical systems.
                     </p>
                 </section>
 
                 <section class="space-y-3">
-                    <h3 class="text-lg font-bold tracking-tight border-b border-slate-200 pb-2 uppercase text-xs tracking-wider text-slate-400">Research Interests</h3>
+                    <h3 class="text-[11px] font-bold uppercase tracking-wider text-slate-400 border-b border-slate-200/85 pb-2">Research Interests</h3>
                     <div class="flex flex-wrap gap-2">
-                        <span class="px-3 py-1 bg-rose-50 border border-rose-200 rounded-full text-xs font-medium text-rose-900">Functional Nanomaterials</span>
-                        <span class="px-3 py-1 bg-sky-50 border border-sky-200 rounded-full text-xs font-medium text-sky-900">MXenes & 2D Multilayer Lattices</span>
-                        <span class="px-3 py-1 bg-rose-50 border border-rose-200 rounded-full text-xs font-medium text-rose-900">Electrochemical Energy Storage</span>
-                        <span class="px-3 py-1 bg-sky-50 border border-sky-200 rounded-full text-xs font-medium text-sky-900">Surface Functionalization Techniques</span>
-                        <span class="px-3 py-1 bg-rose-50 border border-rose-200 rounded-full text-xs font-medium text-rose-900">Supercapacitors & Battery Systems</span>
+                        <span class="px-3 py-1 bg-slate-100 border border-slate-200 rounded-lg text-xs font-semibold text-slate-700 hover:border-blue-300 hover:bg-blue-50/50 transition-colors duration-200 cursor-default">Functional Nanomaterials</span>
+                        <span class="px-3 py-1 bg-slate-100 border border-slate-200 rounded-lg text-xs font-semibold text-slate-700 hover:border-blue-300 hover:bg-blue-50/50 transition-colors duration-200 cursor-default">MXenes & 2D Multilayer Lattices</span>
+                        <span class="px-3 py-1 bg-slate-100 border border-slate-200 rounded-lg text-xs font-semibold text-slate-700 hover:border-blue-300 hover:bg-blue-50/50 transition-colors duration-200 cursor-default">Electrochemical Energy Storage</span>
+                        <span class="px-3 py-1 bg-slate-100 border border-slate-200 rounded-lg text-xs font-semibold text-slate-700 hover:border-blue-300 hover:bg-blue-50/50 transition-colors duration-200 cursor-default">Surface Functionalization Techniques</span>
+                        <span class="px-3 py-1 bg-slate-100 border border-slate-200 rounded-lg text-xs font-semibold text-slate-700 hover:border-blue-300 hover:bg-blue-50/50 transition-colors duration-200 cursor-default">Supercapacitors & Battery Systems</span>
                     </div>
                 </section>
 
                 <section class="space-y-3">
-                    <h3 class="text-lg font-bold tracking-tight border-b border-slate-200 pb-2 uppercase text-xs tracking-wider text-slate-400">Technical Exposure & Tools</h3>
+                    <h3 class="text-[11px] font-bold uppercase tracking-wider text-slate-400 border-b border-slate-200/85 pb-2">Technical Exposure & Tools</h3>
                     <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 text-sm text-slate-600">
-                        <div class="bg-white p-3 border border-slate-200 rounded-lg shadow-sm">
-                            <h4 class="font-bold text-xs mb-1.5 uppercase tracking-wide text-rose-600">Laboratory Methodology</h4>
-                            <ul class="list-disc list-inside space-y-1 text-xs text-slate-600">
-                                <li>UV-Vis & Infrared (IR) Spectroscopy</li>
-                                <li>Academic Laboratory Handling & Reporting</li>
-                                <li>Chemical Synthesis & Basic Purification Workflows</li>
+                        <div class="bg-white p-4 border border-slate-200/80 rounded-xl shadow-sm/50 transition-all duration-300 hover:shadow-sm hover:border-slate-300">
+                            <h4 class="font-bold text-xs mb-2 uppercase tracking-wide text-blue-700 flex items-center gap-1.5">
+                                <span class="w-1.5 h-1.5 bg-blue-600 rounded-full"></span>Laboratory Methodology
+                            </h4>
+                            <ul class="list-none space-y-1.5 text-xs text-slate-600 pl-3">
+                                <li class="relative before:content-['•'] before:absolute before:-left-3 before:text-slate-400">UV-Vis & Infrared (IR) Spectroscopy</li>
+                                <li class="relative before:content-['•'] before:absolute before:-left-3 before:text-slate-400">Academic Laboratory Handling & Reporting</li>
+                                <li class="relative before:content-['•'] before:absolute before:-left-3 before:text-slate-400">Chemical Synthesis & Basic Purification Workflows</li>
                             </ul>
                         </div>
-                        <div class="bg-white p-3 border border-slate-200 rounded-lg shadow-sm">
-                            <h4 class="font-bold text-xs mb-1.5 uppercase tracking-wide text-sky-600">Analysis & Operations</h4>
-                            <ul class="list-disc list-inside space-y-1 text-xs text-slate-600">
-                                <li>Scientific Comprehensive Literature Analysis</li>
-                                <li>Data Organization via Excel / Google Sheets</li>
-                                <li>Technical & Research Communication Reporting</li>
+                        <div class="bg-white p-4 border border-slate-200/80 rounded-xl shadow-sm/50 transition-all duration-300 hover:shadow-sm hover:border-slate-300">
+                            <h4 class="font-bold text-xs mb-2 uppercase tracking-wide text-slate-800 flex items-center gap-1.5">
+                                <span class="w-1.5 h-1.5 bg-slate-600 rounded-full"></span>Analysis & Operations
+                            </h4>
+                            <ul class="list-none space-y-1.5 text-xs text-slate-600 pl-3">
+                                <li class="relative before:content-['•'] before:absolute before:-left-3 before:text-slate-400">Scientific Comprehensive Literature Analysis</li>
+                                <li class="relative before:content-['•'] before:absolute before:-left-3 before:text-slate-400">Data Organization via Excel / Google Sheets</li>
+                                <li class="relative before:content-['•'] before:absolute before:-left-3 before:text-slate-400">Technical & Research Communication Reporting</li>
                             </ul>
                         </div>
                     </div>
                 </section>
 
                 <section class="space-y-3">
-                    <h3 class="text-lg font-bold tracking-tight border-b border-slate-200 pb-2 uppercase text-xs tracking-wider text-slate-400">Education Background</h3>
-                    <div class="space-y-4 relative before:absolute before:inset-0 before:right-auto before:left-2 before:w-px before:bg-slate-200 pl-6">
-                        <div class="relative">
-                            <div class="absolute -left-[22px] top-1.5 w-3 h-3 rounded-full bg-rose-500 ring-4 ring-white"></div>
-                            <span class="text-[10px] font-bold text-slate-400 block uppercase">2023 — 2025</span>
-                            <h4 class="font-bold text-slate-900 text-sm">Master of Science (Chemistry)</h4>
+                    <h3 class="text-[11px] font-bold uppercase tracking-wider text-slate-400 border-b border-slate-200/85 pb-2">Education Background</h3>
+                    <div class="space-y-5 relative before:absolute before:inset-0 before:right-auto before:left-2 before:w-px before:bg-slate-200 pl-6">
+                        <div class="relative group">
+                            <div class="absolute -left-[22px] top-1.5 w-2.5 h-2.5 rounded-full bg-blue-600 ring-4 ring-white transition-transform group-hover:scale-110"></div>
+                            <span class="text-[10px] font-bold text-slate-400 block uppercase tracking-wide">2023 — 2025</span>
+                            <h4 class="font-bold text-slate-900 text-sm group-hover:text-blue-700 transition-colors">Master of Science (Chemistry)</h4>
                             <p class="text-xs text-slate-600 font-medium">Vivekananda Global University, Jaipur</p>
-                            <p class="text-xs font-semibold text-slate-500 mt-0.5">Academic Track Record: CGPA 8.67</p>
+                            <p class="text-xs font-semibold text-slate-400 mt-0.5">Academic Track Record: CGPA 8.67</p>
                         </div>
-                        <div class="relative">
-                            <div class="absolute -left-[22px] top-1.5 w-3 h-3 rounded-full bg-sky-400 ring-4 ring-white"></div>
-                            <span class="text-[10px] font-bold text-slate-400 block uppercase">2020 — 2023</span>
-                            <h4 class="font-bold text-slate-900 text-sm">Bachelor of Science (Chemistry, Zoology, Botany)</h4>
+                        <div class="relative group">
+                            <div class="absolute -left-[22px] top-1.5 w-2.5 h-2.5 rounded-full bg-slate-400 ring-4 ring-white transition-transform group-hover:scale-110"></div>
+                            <span class="text-[10px] font-bold text-slate-400 block uppercase tracking-wide">2020 — 2023</span>
+                            <h4 class="font-bold text-slate-900 text-sm group-hover:text-blue-700 transition-colors">Bachelor of Science (Chemistry, Zoology, Botany)</h4>
                             <p class="text-xs text-slate-600 font-medium">Maharaja Ganga Singh University (MGSU), Bikaner</p>
-                            <p class="text-xs font-semibold text-slate-500 mt-0.5">Academic Evaluation Metrics: 89%</p>
+                            <p class="text-xs font-semibold text-slate-400 mt-0.5">Academic Evaluation Metrics: 89%</p>
                         </div>
-                        <div class="relative">
-                            <div class="absolute -left-[22px] top-1.5 w-3 h-3 rounded-full bg-slate-200 ring-4 ring-white"></div>
-                            <span class="text-[10px] font-bold text-slate-400 block uppercase">Secondary Protocols</span>
+                        <div class="relative group">
+                            <div class="absolute -left-[22px] top-1.5 w-2.5 h-2.5 rounded-full bg-slate-200 ring-4 ring-white"></div>
+                            <span class="text-[10px] font-bold text-slate-400 block uppercase tracking-wide">Secondary Protocols</span>
                             <h4 class="font-semibold text-slate-700 text-xs">Vikas Model Senior Secondary School, Rawatsar</h4>
                             <p class="text-[11px] text-slate-500">12th Grade Science (2020): 90.40%  |  10th Grade (2018): 92.17%</p>
                         </div>
                     </div>
                 </section>
 
-                <section id="achievements" class="space-y-3 pt-4">
-                    <h3 class="text-lg font-bold tracking-tight border-b border-slate-200 pb-2 uppercase text-xs tracking-wider text-slate-400">Achievements & Certifications</h3>
+                <section id="achievements" class="space-y-4 pt-2">
+                    <h3 class="text-[11px] font-bold uppercase tracking-wider text-slate-400 border-b border-slate-200/85 pb-2">Achievements & Certifications</h3>
                     
-                    <div class="bg-gradient-to-r from-rose-50/50 to-sky-50/50 border border-slate-200 rounded-xl p-4 flex gap-3.5 items-start shadow-sm mb-6">
-                        <div class="p-2 bg-gradient-to-br from-rose-500 to-sky-500 text-white rounded-lg shadow-sm shrink-0">
+                    <div class="bg-gradient-to-r from-slate-50 to-blue-50/40 border border-slate-200/80 rounded-xl p-5 flex gap-4 items-start shadow-sm/50 transition-all duration-300 hover:border-blue-200">
+                        <div class="p-2 bg-slate-900 text-white rounded-lg shadow-sm shrink-0">
                             <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z" />
                             </svg>
                         </div>
                         <div>
                             <h4 class="text-sm font-bold text-slate-900">Recipient of INSPIRE Scholarship</h4>
-                            <p class="text-xs text-rose-700 font-semibold uppercase tracking-wider mt-0.5">Department of Science & Technology (DST), Govt. of India</p>
-                            <p class="text-xs text-slate-600 mt-1 leading-relaxed">Awarded under Scholarship for Higher Education (SHE) component for securing academic performance metrics ranked within the top 1% tier threshold population of the State Board Examination results.</p>
+                            <p class="text-[10px] text-blue-700 font-bold uppercase tracking-wider mt-0.5">Department of Science & Technology (DST), Govt. of India</p>
+                            <p class="text-xs text-slate-600 mt-1.5 leading-relaxed">Awarded under Scholarship for Higher Education (SHE) component for securing academic performance metrics ranked within the top 1% tier threshold population of the State Board Examination results.</p>
                         </div>
                     </div>
 
                     <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
                         
-                        <div class="border border-slate-200 rounded-xl p-4 bg-white shadow-sm flex flex-col justify-between hover:border-rose-200 transition-colors">
+                        <div class="group border border-slate-200 rounded-xl p-4 bg-white shadow-sm/50 flex flex-col justify-between transition-all duration-300 hover:border-blue-200 hover:shadow-sm">
                             <div>
-                                <span class="px-2 py-0.5 bg-rose-50 text-rose-700 text-[9px] font-bold rounded uppercase tracking-wider">Professional Experience</span>
-                                <h4 class="text-sm font-bold text-slate-900 mt-2">Certificate of Experience (Internship)</h4>
-                                <p class="text-xs text-slate-500 mt-1 font-medium">K4 Media and Technologies, Jaipur. Gained valuable competence in technical communication, research content organization, and delivery systems workflows.</p>
+                                <span class="px-2 py-0.5 bg-slate-100 text-slate-700 text-[9px] font-bold rounded tracking-wide uppercase">Professional Experience</span>
+                                <h4 class="text-sm font-bold text-slate-900 mt-2 transition-colors group-hover:text-blue-700">Certificate of Experience (Internship)</h4>
+                                <p class="text-xs text-slate-500 mt-1 font-medium leading-relaxed">K4 Media and Technologies, Jaipur. Gained valuable competence in technical communication, research content organization, and delivery systems workflows.</p>
                             </div>
-                            <div class="mt-4 border-t border-slate-100 pt-3 text-right">
-                                <a href="assets/Certificate_of_Experience_K4_Media.pdf" target="_blank" class="text-xs font-bold text-rose-600 hover:text-rose-800 inline-flex items-center gap-1 hover:underline">
+                            <div class="mt-4 border-t border-slate-100 pt-3 flex justify-end">
+                                <a href="assets/Certificate_of_Experience_K4_Media.pdf" target="_blank" class="text-xs font-bold text-slate-600 hover:text-blue-600 inline-flex items-center gap-1 transition-colors">
                                     View Document PDF
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-3 w-3" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" /></svg>
                                 </a>
                             </div>
                         </div>
 
-                        <div class="border border-slate-200 rounded-xl p-4 bg-white shadow-sm flex flex-col justify-between hover:border-sky-200 transition-colors">
+                        <div class="group border border-slate-200 rounded-xl p-4 bg-white shadow-sm/50 flex flex-col justify-between transition-all duration-300 hover:border-blue-200 hover:shadow-sm">
                             <div>
-                                <span class="px-2 py-0.5 bg-sky-50 text-sky-700 text-[9px] font-bold rounded uppercase tracking-wider">Academic Literature</span>
-                                <h4 class="text-sm font-bold text-slate-900 mt-2">RTESD 2025 Abstract Book</h4>
-                                <p class="text-xs text-slate-500 mt-1 font-medium">Vivekananda Global University, Jaipur. Published summary compilation showcasing core materials research tracking parameters.</p>
+                                <span class="px-2 py-0.5 bg-slate-100 text-slate-700 text-[9px] font-bold rounded tracking-wide uppercase">Academic Literature</span>
+                                <h4 class="text-sm font-bold text-slate-900 mt-2 transition-colors group-hover:text-blue-700">RTESD 2025 Abstract Book</h4>
+                                <p class="text-xs text-slate-500 mt-1 font-medium leading-relaxed">Vivekananda Global University, Jaipur. Published summary compilation showcasing core materials research tracking parameters.</p>
                             </div>
-                            <div class="mt-4 border-t border-slate-100 pt-3 text-right">
-                                <a href="assets/RTESD_2025_Abstract_Book.pdf" target="_blank" class="text-xs font-bold text-sky-600 hover:text-sky-800 inline-flex items-center gap-1 hover:underline">
+                            <div class="mt-4 border-t border-slate-100 pt-3 flex justify-end">
+                                <a href="assets/RTESD_2025_Abstract_Book.pdf" target="_blank" class="text-xs font-bold text-slate-600 hover:text-blue-600 inline-flex items-center gap-1 transition-colors">
                                     View Document PDF
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-3 w-3" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" /></svg>
                                 </a>
                             </div>
                         </div>
 
-                        <div class="border border-slate-200 rounded-xl p-4 bg-white shadow-sm flex flex-col justify-between hover:border-rose-200 transition-colors">
+                        <div class="group border border-slate-200 rounded-xl p-4 bg-white shadow-sm/50 flex flex-col justify-between transition-all duration-300 hover:border-blue-200 hover:shadow-sm">
                             <div>
-                                <span class="px-2 py-0.5 bg-rose-50 text-rose-700 text-[9px] font-bold rounded uppercase tracking-wider">Competition</span>
-                                <h4 class="text-sm font-bold text-slate-900 mt-2">Design-A-Thon Certificate</h4>
-                                <p class="text-xs text-slate-500 mt-1 font-medium">Participation credential demonstrating rapid scientific project ideation, structure mapping, and concept presentation handling.</p>
+                                <span class="px-2 py-0.5 bg-slate-100 text-slate-700 text-[9px] font-bold rounded tracking-wide uppercase">Competition</span>
+                                <h4 class="text-sm font-bold text-slate-900 mt-2 transition-colors group-hover:text-blue-700">Design-A-Thon Certificate</h4>
+                                <p class="text-xs text-slate-500 mt-1 font-medium leading-relaxed">Participation credential demonstrating rapid scientific project ideation, structure mapping, and concept presentation handling.</p>
                             </div>
-                            <div class="mt-4 border-t border-slate-100 pt-3 text-right">
-                                <a href="assets/Design_A_Thon_Participation_Certificate.pdf" target="_blank" class="text-xs font-bold text-rose-600 hover:text-rose-800 inline-flex items-center gap-1 hover:underline">
+                            <div class="mt-4 border-t border-slate-100 pt-3 flex justify-end">
+                                <a href="assets/Design_A_Thon_Participation_Certificate.pdf" target="_blank" class="text-xs font-bold text-slate-600 hover:text-blue-600 inline-flex items-center gap-1 transition-colors">
                                     View Document PDF
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-3 w-3" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" /></svg>
                                 </a>
                             </div>
                         </div>
 
-                        <div class="border border-slate-200 rounded-xl p-4 bg-white shadow-sm flex flex-col justify-between hover:border-sky-200 transition-colors">
+                        <div class="group border border-slate-200 rounded-xl p-4 bg-white shadow-sm/50 flex flex-col justify-between transition-all duration-300 hover:border-blue-200 hover:shadow-sm">
                             <div>
-                                <span class="px-2 py-0.5 bg-sky-50 text-sky-700 text-[9px] font-bold rounded uppercase tracking-wider">International Forum</span>
-                                <h4 class="text-sm font-bold text-slate-900 mt-2">RTESD International Conference 2025</h4>
-                                <p class="text-xs text-slate-500 mt-1 font-medium">Attended active global interactive scientific symposium reviewing Recent Trends in Environmental and Sustainable Development paradigms.</p>
+                                <span class="px-2 py-0.5 bg-slate-100 text-slate-700 text-[9px] font-bold rounded tracking-wide uppercase">International Forum</span>
+                                <h4 class="text-sm font-bold text-slate-900 mt-2 transition-colors group-hover:text-blue-700">RTESD International Conference</h4>
+                                <p class="text-xs text-slate-500 mt-1 font-medium leading-relaxed">Attended active global interactive scientific symposium reviewing Recent Trends in Environmental and Sustainable Development paradigms.</p>
                             </div>
-                            <div class="mt-4 border-t border-slate-100 pt-3 text-right">
-                                <a href="assets/RTESD_International_Conference_2025.pdf" target="_blank" class="text-xs font-bold text-sky-600 hover:text-sky-800 inline-flex items-center gap-1 hover:underline">
+                            <div class="mt-4 border-t border-slate-100 pt-3 flex justify-end">
+                                <a href="assets/RTESD_International_Conference_2025.pdf" target="_blank" class="text-xs font-bold text-slate-600 hover:text-blue-600 inline-flex items-center gap-1 transition-colors">
                                     View Document PDF
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-3 w-3" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" /></svg>
                                 </a>
                             </div>
                         </div>
 
-                        <div class="border border-slate-200 rounded-xl p-4 bg-white shadow-sm flex flex-col justify-between hover:border-rose-200 transition-colors">
+                        <div class="group border border-slate-200 rounded-xl p-4 bg-white shadow-sm/50 flex flex-col justify-between transition-all duration-300 hover:border-blue-200 hover:shadow-sm">
                             <div>
-                                <span class="px-2 py-0.5 bg-rose-50 text-rose-700 text-[9px] font-bold rounded uppercase tracking-wider">Honors Award</span>
-                                <h4 class="text-sm font-bold text-slate-900 mt-2">Shodh Prayas 2025 Achievement</h4>
-                                <p class="text-xs text-slate-500 mt-1 font-medium">Certificate of Achievement for Poster Presentation detailing structural review mechanics and research roadmap configurations.</p>
+                                <span class="px-2 py-0.5 bg-slate-100 text-slate-700 text-[9px] font-bold rounded tracking-wide uppercase">Honors Award</span>
+                                <h4 class="text-sm font-bold text-slate-900 mt-2 transition-colors group-hover:text-blue-700">Shodh Prayas 2025 Achievement</h4>
+                                <p class="text-xs text-slate-500 mt-1 font-medium leading-relaxed">Certificate of Achievement for Poster Presentation detailing structural review mechanics and research roadmap configurations.</p>
                             </div>
-                            <div class="mt-4 border-t border-slate-100 pt-3 text-right">
-                                <a href="assets/Shodh_Prayas_2025_Poster_Presentation.pdf" target="_blank" class="text-xs font-bold text-rose-600 hover:text-rose-800 inline-flex items-center gap-1 hover:underline">
+                            <div class="mt-4 border-t border-slate-100 pt-3 flex justify-end">
+                                <a href="assets/Shodh_Prayas_2025_Poster_Presentation.pdf" target="_blank" class="text-xs font-bold text-slate-600 hover:text-blue-600 inline-flex items-center gap-1 transition-colors">
                                     View Document PDF
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-3 w-3" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" /></svg>
                                 </a>
                             </div>
                         </div>
 
-                        <div class="border border-slate-200 rounded-xl p-4 bg-white shadow-sm flex flex-col justify-between hover:border-sky-200 transition-colors">
+                        <div class="group border border-slate-200 rounded-xl p-4 bg-white shadow-sm/50 flex flex-col justify-between transition-all duration-300 hover:border-blue-200 hover:shadow-sm">
                             <div>
-                                <span class="px-2 py-0.5 bg-sky-50 text-sky-700 text-[9px] font-bold rounded uppercase tracking-wider">Technical Workshop</span>
-                                <h4 class="text-sm font-bold text-slate-900 mt-2">Material Synthesis Workshop</h4>
-                                <p class="text-xs text-slate-500 mt-1 font-medium">Hands-on exposure to advanced synthetic chemistry reaction design methodologies (including Click Chemistry) and pathway mapping.</p>
+                                <span class="px-2 py-0.5 bg-slate-100 text-slate-700 text-[9px] font-bold rounded tracking-wide uppercase">Technical Workshop</span>
+                                <h4 class="text-sm font-bold text-slate-900 mt-2 transition-colors group-hover:text-blue-700">Material Synthesis Workshop</h4>
+                                <p class="text-xs text-slate-500 mt-1 font-medium leading-relaxed">Hands-on exposure to advanced synthetic chemistry reaction design methodologies (including Click Chemistry) and pathway mapping.</p>
                             </div>
-                            <div class="mt-4 border-t border-slate-100 pt-3 text-right">
-                                <a href="assets/Material_Synthesis_Workshop.pdf" target="_blank" class="text-xs font-bold text-sky-600 hover:text-sky-800 inline-flex items-center gap-1 hover:underline">
+                            <div class="mt-4 border-t border-slate-100 pt-3 flex justify-end">
+                                <a href="assets/Material_Synthesis_Workshop.pdf" target="_blank" class="text-xs font-bold text-slate-600 hover:text-blue-600 inline-flex items-center gap-1 transition-colors">
                                     View Document PDF
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-3 w-3" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" /></svg>
                                 </a>
                             </div>
                         </div>
@@ -252,49 +263,47 @@
                 </section>
 
                 <section class="space-y-4">
-                    <h3 class="text-lg font-bold tracking-tight border-b border-slate-200 pb-2 uppercase text-xs tracking-wider text-slate-400">Core Dissertation Project</h3>
+                    <h3 class="text-[11px] font-bold uppercase tracking-wider text-slate-400 border-b border-slate-200/85 pb-2">Core Dissertation Project</h3>
                     
-                    <div class="bg-white border border-slate-200 rounded-xl p-5 shadow-sm space-y-4">
+                    <div class="bg-white border border-slate-200 rounded-2xl p-6 shadow-sm/50 space-y-5">
                         <div>
-                            <span class="px-2 py-0.5 bg-sky-50 text-sky-700 text-[10px] font-bold rounded uppercase tracking-wide border border-sky-200/60">Master's Dissertation Research</span>
-                            <h4 class="text-base font-bold text-stone-900 mt-1.5">A Roadmap: Functionalized MXenes for Energy Storage Applications</h4>
-                            <p class="text-xs text-slate-500 font-medium mt-0.5">Advisor: Dr. Nutan Sharma — Department of Chemistry, VGU</p>
+                            <span class="px-2.5 py-0.5 bg-blue-50 border border-blue-100 text-blue-700 text-[10px] font-bold rounded-lg uppercase tracking-wide">Master's Dissertation Research</span>
+                            <h4 class="text-base font-bold text-slate-900 mt-2 leading-snug">A Roadmap: Functionalized MXenes for Energy Storage Applications</h4>
+                            <p class="text-xs text-slate-400 font-medium mt-0.5">Advisor: Dr. Nutan Sharma — Department of Chemistry, VGU</p>
                         </div>
 
-                        <div class="bg-slate-50 border border-slate-200 rounded-lg p-3.5">
-                            <h5 class="text-xs font-bold text-slate-800 uppercase tracking-wide mb-1">Abstract Extract:</h5>
+                        <div class="bg-slate-50 border border-slate-200 rounded-xl p-4">
+                            <h5 class="text-xs font-bold text-slate-800 uppercase tracking-wide mb-1.5">Abstract Extract:</h5>
                             <p class="text-xs text-slate-600 leading-relaxed text-justify">
                                 MXenes, a family of two-dimensional transition metal carbides and nitrides, have emerged as highly promising materials for next-generation energy storage devices due to their remarkable electrical conductivity, tunable surface chemistry, and layered structure. The performance of MXenes can be significantly enhanced through surface functionalization, which tailors their physical and chemical interactions with various electrolytes and active materials...
                             </p>
-                            <div class="mt-2 text-right">
-                                <a href="assets/Roadmap for Mxene.pdf" target="_blank" class="text-xs font-bold text-sky-700 hover:text-sky-950 inline-flex items-center gap-0.5 hover:underline">
+                            <div class="mt-3 text-right">
+                                <a href="assets/Roadmap for Mxene.pdf" target="_blank" class="text-xs font-bold text-blue-700 hover:text-blue-900 inline-flex items-center gap-0.5 transition-colors">
                                     Read comprehensive literature review PDF
-                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-3 w-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
-                                    </svg>
+                                    <svg xmlns="http://www.w3.org/2000/slate-600" class="h-3 w-3" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" /></svg>
                                 </a>
                             </div>
                         </div>
 
-                        <div class="border border-slate-200 rounded-xl overflow-hidden bg-slate-50">
-                            <div class="bg-white border-b border-slate-200 px-4 py-2 flex items-center justify-between">
+                        <div class="border border-slate-200 rounded-xl overflow-hidden bg-slate-900 shadow-inner">
+                            <div class="bg-white border-b border-slate-200 px-4 py-2.5 flex items-center justify-between">
                                 <div class="flex items-center gap-2">
-                                    <span class="w-2 h-2 rounded-full bg-rose-500 animate-pulse"></span>
-                                    <span class="text-[11px] font-bold text-slate-700 uppercase tracking-wider">3D Molecular Crystal Lattice Engine</span>
+                                    <span class="w-1.5 h-1.5 rounded-full bg-blue-600 animate-pulse"></span>
+                                    <span class="text-[10px] font-bold text-slate-700 uppercase tracking-wider">3D Molecular Crystal Lattice Engine</span>
                                 </div>
-                                <span class="text-[10px] font-mono font-medium text-rose-500 bg-rose-50 px-2 py-0.5 rounded">Interactive Model</span>
+                                <span class="text-[9px] font-mono font-bold text-blue-600 bg-blue-50 px-2 py-0.5 rounded-md border border-blue-100">Live Matrix</span>
                             </div>
                             
-                            <div class="w-full h-[380px] bg-black">
+                            <div class="w-full h-[380px]">
                                 <iframe class="w-full h-full border-0" title="Ti3C2Tx MXene" allowfullscreen mozallowfullscreen="true" webkitallowfullscreen="true" allow="autoplay; fullscreen; xr-spatial-tracking" xr-spatial-tracking execution-while-out-of-viewport execution-while-not-rendered web-share src="https://sketchfab.com/models/e646efe3e4e6416ba06a10ad87552494/embed?autostart=1&ui_theme=dark"></iframe>
                             </div>
                             
                             <div class="bg-white border-t border-slate-200 px-4 py-3 text-[10px] text-slate-500 leading-normal space-y-1">
-                                <p class="italic"><strong>Model Navigation Instruction:</strong> Click inside canvas boundaries to initialize interactive control mechanics. Click and drag left mouse axis to tumble molecular layer dimensions; scroll axis controls focal proximity zoom.</p>
-                                <div class="pt-2 border-t border-slate-100 flex flex-wrap items-center justify-between gap-2 text-slate-400 font-mono">
-                                    <span>Model Reference: <a href="https://sketchfab.com/3d-models/ti3c2tx-mxene-e646efe3e4e6416ba06a10ad87552494" target="_blank" class="underline hover:text-slate-400">Ti3C2Tx MXene</a></span>
-                                    <span>Author: <a href="https://sketchfab.com/m_b_v" target="_blank" class="underline hover:text-slate-400">@m_b_v</a></span>
-                                    <span>License: <a href="http://creativecommons.org/licenses/by/4.0/" target="_blank" class="underline hover:text-slate-400">CC Attribution 4.0 International</a></span>
+                                <p class="italic font-medium text-slate-400"><strong>Model Control Dynamics:</strong> Select viewport spatial coordinates to lock matrix focus. Left mouse vector handles spherical rotation axes; scroll handles programmatic depth zoom scalar values.</p>
+                                <div class="pt-2 border-t border-slate-100 flex flex-wrap items-center justify-between gap-2 text-slate-400 font-mono text-[9px]">
+                                    <span>Model: <a href="https://sketchfab.com/3d-models/ti3c2tx-mxene-e646efe3e4e6416ba06a10ad87552494" target="_blank" class="underline hover:text-slate-600">Ti3C2Tx MXene</a></span>
+                                    <span>Author: <a href="https://sketchfab.com/m_b_v" target="_blank" class="underline hover:text-slate-600">@m_b_v</a></span>
+                                    <span>License: <a href="http://creativecommons.org/licenses/by/4.0/" target="_blank" class="underline hover:text-slate-600">CC BY 4.0 International</a></span>
                                 </div>
                             </div>
                         </div>
@@ -304,13 +313,13 @@
             </div>
         </div>
 
-        <footer id="contact" class="border-t border-slate-200 bg-white text-xs text-slate-500 py-6 mt-auto">
+        <footer id="contact" class="border-t border-slate-200 bg-white text-xs text-slate-400 py-6 mt-auto">
             <div class="max-w-5xl mx-auto px-6 flex flex-col sm:flex-row items-center justify-between gap-4 font-medium">
                 <div>© 2026 Kumkum. Research Portfolio Deployment.</div>
                 <div class="flex items-center gap-4">
-                    <span>Location: <strong class="text-slate-700">Jaipur, Raj.</strong></span>
+                    <span>Repository Context: <strong class="text-slate-600">VGU_CHEM_ENG</strong></span>
                     <span>|</span>
-                    <span>Contact: <a href="mailto:bishnoikumkum220@gmail.com" class="text-rose-600 hover:underline">Mail Channel</a></span>
+                    <span>Channel: <a href="mailto:bishnoikumkum220@gmail.com" class="text-blue-600 hover:underline">Secure Mail Link</a></span>
                 </div>
             </div>
         </footer>
@@ -326,7 +335,8 @@
             const appWorkspace = document.getElementById("mainContent");
 
             if (inputKey === targetKey) {
-                lockShield.classList.add("hidden");
+                lockShield.classList.add("opacity-0", "pointer-events-none");
+                setTimeout(() => lockShield.classList.add("hidden"), 500);
                 appWorkspace.classList.remove("secure-blur");
             } else {
                 errorBlock.classList.remove("hidden");
